@@ -21,5 +21,8 @@
   "devDependencies": {
     "eslint": "~5.0.1",
     "eslint-config-makina": "~0.4.2"
+  },
+  "dependencies": {
+    "gitty": "~3.6.0"
   }
 }
