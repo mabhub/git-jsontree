@@ -1,0 +1,25 @@
+{
+  "name": "git-learn",
+  "version": "0.1.0",
+  "description": "",
+  "main": "git-learn",
+  "bin": {
+    "git-learn": "./git-learn.js"
+  },
+  "scripts": {
+    "version": "git changelog -t $npm_package_version && git add CHANGELOG.md"
+  },
+  "keywords": [
+    "git",
+    "learngitbranching"
+  ],
+  "author": {
+    "name": "Benjamin Marguin",
+    "email": "git@ma-b.com"
+  },
+  "license": "AGPL",
+  "devDependencies": {
+    "eslint": "~5.0.1",
+    "eslint-config-makina": "~0.4.2"
+  }
+}
