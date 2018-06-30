@@ -17,6 +17,12 @@
     "name": "Benjamin Marguin",
     "email": "git@ma-b.com"
   },
+  "contributors": [
+    {
+      "name": "Simon Prévidente",
+      "url": "https://www.simon-previdente.fr/"
+    }
+  ],
   "license": "AGPL",
   "devDependencies": {
     "eslint": "~5.0.1",
