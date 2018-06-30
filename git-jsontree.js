@@ -55,10 +55,27 @@ const buildBranchList = (acc, branch) => {
 
 class JSONTree {
   constructor (path) {
-    this.repository = gitty(path);
-    this.commits = this.getCommits();
-    this.branches = this.getBranches();
-    this.schema = this.buildSchema();
+    path && this.build(path);
+  }
+
+  build (path = this.path) {
+    this.path = path || process.cwd();
+    this.repository = gitty(this.path);
+
+    try {
+      this.repository.statusSync();
+      this.commits = this.getCommits();
+      this.branches = this.getBranches();
+      this.schema = this.buildSchema();
+    } catch (e) {
+      return this;
+    }
+
+    return this;
+  }
+
+  toString () {
+    return this.schema ? JSON.stringify(this.schema) : '[JSONTree: no path given]';
   }
 
   getCommits () {
@@ -89,12 +106,14 @@ class JSONTree {
     return schema;
   }
 }
+module.exports = JSONTree;
 
-const tree = new JSONTree(process.cwd());
+
+const tree = new JSONTree();
 
 if (process.env.DEBUG === 'true') {
   console.log(tree.schema); // eslint-disable-line no-console
-} else {
+} else if (tree.schema) {
   process.stdout.write(JSON.stringify(tree.schema));
   process.stdout.write('\n');
 }
