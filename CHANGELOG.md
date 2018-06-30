@@ -1,4 +1,10 @@
 
+0.3.0 / 2018-06-30
+==================
+
+  * Rename package as previous name wasn't available on main rgistry
+  * Add short project description to README
+
 0.2.0 / 2018-06-30
 ==================
 
