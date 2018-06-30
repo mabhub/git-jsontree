@@ -1,4 +1,12 @@
 
+0.4.0 / 2018-06-30
+==================
+
+  * Gather local branches from repository
+  * Use DEBUG env var to output JSON without serialization
+  * Fix an issue with default schema export
+  * Include commits from all refs while listing
+
 0.3.0 / 2018-06-30
 ==================
 
