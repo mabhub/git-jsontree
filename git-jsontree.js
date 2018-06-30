@@ -14,7 +14,16 @@ const logFmt = JSON.stringify({
   parents: '%P',
 });
 
+const branchTpl = {
+  id: undefined,
+  target: undefined,
+  remoteTrackingBranchID: null,
+  remote: false,
+  type: 'branch',
+};
+
 const getCommits = new Command(repository, 'log', ['-a', `--pretty=format:'${logFmt}',`, '']);
+const getBranches = new Command(repository, 'branch', ['--format="%(refname:short) %(objectname:)"']);
 
 const commits = parser.log(getCommits.execSync())
   // Cleanup commit parents
@@ -28,10 +37,30 @@ const commits = parser.log(getCommits.execSync())
     [curr.id]: curr,
   }), {});
 
+const branches = getBranches.execSync()
+  .split('\n')
+  .reduce((acc, branch) => {
+    const [id, target] = branch[0] !== '('
+      ? branch.split(' ') // As: "branche/name abcdef01234sha1"
+      : ['HEAD', '']; // TODO: Find real HEAD sha1
+
+    return id ? {
+      ...acc,
+      [id]: {
+        ...branchTpl,
+        id,
+        target,
+      },
+    } : acc;
+  }, {});
 
 schema.commits = {
   ...schema.commits,
   ...commits,
+};
+
+schema.branches = {
+  ...branches,
 };
 
 if (process.env.DEBUG === 'true') {
