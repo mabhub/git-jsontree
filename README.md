@@ -1,5 +1,7 @@
 # Git learn
 
+A tool to create JSON trees for learngitbranching.js.org from real git repository.
+
 ## Quick start
 
 ```sh
