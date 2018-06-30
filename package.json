@@ -7,7 +7,8 @@
     "git-jsontree": "./index.js"
   },
   "scripts": {
-    "version": "git changelog -t $npm_package_version && git add CHANGELOG.md"
+    "version": "git changelog -t $npm_package_version && git add CHANGELOG.md",
+    "test": "jest"
   },
   "keywords": [
     "git",
