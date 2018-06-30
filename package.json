@@ -26,7 +26,8 @@
   "license": "AGPL",
   "devDependencies": {
     "eslint": "~5.0.1",
-    "eslint-config-makina": "~0.4.2"
+    "eslint-config-makina": "~0.4.2",
+    "jest": "~23.2.0"
   },
   "dependencies": {
     "gitty": "~3.6.0"
