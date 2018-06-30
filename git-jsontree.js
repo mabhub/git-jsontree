@@ -14,7 +14,7 @@ const logFmt = JSON.stringify({
   parents: '%P',
 });
 
-const getCommits = new Command(repository, 'log', [`--pretty=format:'${logFmt}',`, '']);
+const getCommits = new Command(repository, 'log', ['-a', `--pretty=format:'${logFmt}',`, '']);
 
 const commits = parser.log(getCommits.execSync())
   // Cleanup commit parents
