@@ -34,6 +34,11 @@ schema.commits = {
   ...commits,
 };
 
-process.stdout.write(JSON.stringify(schema));
-process.stdout.write('\n');
+if (process.env.DEBUG === 'true') {
+  console.log(schema); // eslint-disable-line no-console
+} else {
+  process.stdout.write(JSON.stringify(schema));
+  process.stdout.write('\n');
+}
+
 setTimeout(process.exit, 10);
