@@ -1,4 +1,4 @@
-module.export = {
+module.exports = {
   branches: {
     master: {
       target: 'C0',
