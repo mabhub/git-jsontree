@@ -1,13 +1,13 @@
-# Git learn
+# Git JSONTree
 
 A tool to create JSON trees for learngitbranching.js.org from real git repository.
 
 ## Quick start
 
 ```sh
-  npm i -g mabhub/git-learn
+  npm i -g mabhub/git-jsontree
   cd /your/git/project/working/directory
-  git learn # copy generated output to clipboard
+  git jsontree # copy generated output to clipboard
 ```
 
 then:

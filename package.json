@@ -1,10 +1,10 @@
 {
-  "name": "git-learn",
+  "name": "git-jsontree",
   "version": "0.2.0",
   "description": "",
-  "main": "git-learn",
+  "main": "git-jsontree",
   "bin": {
-    "git-learn": "./git-learn.js"
+    "git-jsontree": "./git-jsontree.js"
   },
   "scripts": {
     "version": "git changelog -t $npm_package_version && git add CHANGELOG.md"
