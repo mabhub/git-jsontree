@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+const isCommandLine = require.main === module;
+
 const gitty      = require('gitty');
 const Command    = require('gitty/lib/command.js');
 const parser     = require('gitty/lib/parser.js');
@@ -59,7 +61,7 @@ class JSONTree {
   }
 
   build (path = this.path) {
-    this.path = path || process.cwd();
+    this.path = path;
     this.repository = gitty(this.path);
 
     try {
@@ -109,13 +111,15 @@ class JSONTree {
 module.exports = JSONTree;
 
 
-const tree = new JSONTree();
+if (isCommandLine) {
+  const tree = new JSONTree(process.cwd());
 
-if (process.env.DEBUG === 'true') {
-  console.log(tree.schema); // eslint-disable-line no-console
-} else if (tree.schema) {
-  process.stdout.write(JSON.stringify(tree.schema));
-  process.stdout.write('\n');
+  if (process.env.DEBUG === 'true') {
+    console.log(tree.schema); // eslint-disable-line no-console
+  } else if (tree.schema) {
+    process.stdout.write(JSON.stringify(tree.schema));
+    process.stdout.write('\n');
+  }
+
+  setTimeout(process.exit, 10);
 }
-
-setTimeout(process.exit, 10);
