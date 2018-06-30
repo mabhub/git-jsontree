@@ -1,4 +1,17 @@
 
+0.5.0 / 2018-07-01
+==================
+
+  * Setup first small tests suite
+  * Rename main file to `index.js`
+  * Setup test dependencies
+  * Output to stdout only when called from command line
+  * Move tree building to a dedicated method
+  * Store method results to local properties
+  * Extract pure functions from Class
+  * Convert main codebase to a Class pattern
+  * Add Simon P. as contributor, at least for chatting about the idea
+
 0.4.0 / 2018-06-30
 ==================
 
