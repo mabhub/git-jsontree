@@ -28,6 +28,31 @@ const getCommitsCmd = repository =>
 const getBranchesCmd = repository =>
   new Command(repository, 'branch', ['--format="%(refname:short) %(objectname:)"']);
 
+const mapParents = commit => ({
+  ...commit,
+  parents: commit.parents.length ? commit.parents.split(' ') : ['C0'],
+});
+
+const reduceArrayToObj = (acc, curr) => ({
+  ...acc,
+  [curr.id]: curr,
+});
+
+const buildBranchList = (acc, branch) => {
+  const [id, target] = branch[0] !== '('
+    ? branch.split(' ') // As: "branche/name abcdef01234sha1"
+    : ['HEAD', '']; // TODO: Find real HEAD sha1
+
+  return id ? {
+    ...acc,
+    [id]: {
+      ...branchTpl,
+      id,
+      target,
+    },
+  } : acc;
+};
+
 class JSONTree {
   constructor (path) {
     this.repository = gitty(path);
@@ -36,34 +61,15 @@ class JSONTree {
   getCommits () {
     return parser.log(getCommitsCmd(this.repository).execSync())
       // Cleanup commit parents
-      .map(commit => ({
-        ...commit,
-        parents: commit.parents.length ? commit.parents.split(' ') : ['C0'],
-      }))
+      .map(mapParents)
       // Convert from Array to Object
-      .reduce((acc, curr) => ({
-        ...acc,
-        [curr.id]: curr,
-      }), {});
+      .reduce(reduceArrayToObj, {});
   }
 
   getBranches () {
     return getBranchesCmd(this.repository).execSync()
       .split('\n')
-      .reduce((acc, branch) => {
-        const [id, target] = branch[0] !== '('
-          ? branch.split(' ') // As: "branche/name abcdef01234sha1"
-          : ['HEAD', '']; // TODO: Find real HEAD sha1
-
-        return id ? {
-          ...acc,
-          [id]: {
-            ...branchTpl,
-            id,
-            target,
-          },
-        } : acc;
-      }, {});
+      .reduce(buildBranchList, {});
   }
 
   json () {
