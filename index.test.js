@@ -22,4 +22,18 @@ describe('JSONTree Class', () => {
       expect(isValidJSON(tree.toString())).toBe(true);
     });
   });
+
+  describe('Tree schema', () => {
+    const repo = new TempRepository();
+    const { schema } = new JSONTree(repo.path);
+
+    it('has the right commits quantity', () => {
+      const commitCount = Object.keys(schema.commits).length;
+      expect(commitCount).toBe(10);
+    });
+
+    afterAll(() => {
+      repo.clean();
+    });
+  });
 });
