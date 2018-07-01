@@ -112,6 +112,7 @@ class JSONTree {
 
 module.exports = JSONTree;
 
+/* istanbul ignore if */
 if (isCommandLine) {
   const tree = new JSONTree(process.cwd());
 
