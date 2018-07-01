@@ -2,6 +2,8 @@ const JSONTree = require('.');
 const TempRepository = require('./temp-repository.js');
 const { isValidJSON } = require('./helpers.js');
 
+const iwd = process.cwd();
+
 describe('JSONTree Class', () => {
   describe('toString method', () => {
     it('returns custom text when no path given', () => {
@@ -31,6 +33,7 @@ describe('JSONTree Class', () => {
 
     afterAll(() => {
       repo.clean();
+      process.chdir(iwd);
     });
   });
 });
