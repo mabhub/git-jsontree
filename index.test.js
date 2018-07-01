@@ -27,9 +27,14 @@ describe('JSONTree Class', () => {
     const repo = new TempRepository();
     const { schema } = new JSONTree(repo.path);
 
-    it('has the right commits quantity', () => {
+    it('has the right number of commits', () => {
       const commitCount = Object.keys(schema.commits).length;
-      expect(commitCount).toBe(10);
+      expect(commitCount).toBe(repo.settings.commitCount + 1); // +1 is for C0
+    });
+
+    it('has the right number of branch', () => {
+      const branchCount = Object.keys(schema.branches).length;
+      expect(branchCount).toBe(repo.settings.branches.length);
     });
 
     afterAll(() => {
