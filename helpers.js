@@ -48,15 +48,16 @@ const mapParents = commit => ({
 });
 
 /**
- * Add new item to dict using id item property as dict key
+ * Add new item to dict using key name as dict key
  *
+ * @param {string} key Name to use for dict key
  * @param {object} dict Original object
  * @param {object} item New item to add to dict
  * @returns {object} New instance of dict, with item added
  */
-const reduceArrayToObj = (dict, item) => ({
+const reduceArrayToObj = key => (dict, item) => ({
   ...dict,
-  [item.id]: item,
+  [item[key]]: item,
 });
 
 const buildBranchList = (acc, branch) => {

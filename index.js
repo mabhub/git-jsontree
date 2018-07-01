@@ -74,7 +74,7 @@ class JSONTree {
       // Cleanup commit parents
       .map(mapParents)
       // Convert from Array to Object
-      .reduce(reduceArrayToObj, {});
+      .reduce(reduceArrayToObj('id'), {});
   }
 
   /**
