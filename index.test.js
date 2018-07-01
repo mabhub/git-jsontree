@@ -44,7 +44,7 @@ describe('JSONTree Class', () => {
 
     it('has the right number of branch', () => {
       const branchCount = Object.keys(schema.branches).length;
-      expect(branchCount).toBe(repo.settings.branches.length);
+      expect(branchCount).toBe(repo.settings.branches.length + 1); // +1 is for (detached) HEAD
     });
   });
 });

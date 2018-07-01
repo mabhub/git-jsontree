@@ -40,6 +40,7 @@ class TempRepository {
       new Command(this.repo, 'checkout master'),
       new Command(this.repo, this.mergeCmd()),
       new Command(this.repo, this.commitCmd()),
+      new Command(this.repo, 'checkout --detach'),
     ];
 
     commands.map(cmd => cmd.execSync());
