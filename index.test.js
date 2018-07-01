@@ -1,4 +1,5 @@
 const JSONTree = require('.');
+const TempRepository = require('./temp-repository.js');
 
 const isValidJSON = json => {
   try {

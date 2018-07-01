@@ -28,7 +28,8 @@
   "devDependencies": {
     "eslint": "~5.0.1",
     "eslint-config-makina": "~0.4.2",
-    "jest": "~23.2.0"
+    "jest": "~23.2.0",
+    "tmp": "0.0.33"
   },
   "dependencies": {
     "gitty": "~3.6.0"
