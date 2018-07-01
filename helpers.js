@@ -1,3 +1,9 @@
+/**
+ * Return true or false whether input string i a valid JSON or not
+ *
+ * @param {string} json String to be tested
+ * @returns {boolean} True if json is a valid JSON string, otherwise false
+ */
 const isValidJSON = json => {
   try {
     JSON.parse(json);
@@ -7,6 +13,9 @@ const isValidJSON = json => {
   return true;
 };
 
+/**
+ * Template used with `--pretty` option of `git log` command
+ */
 const commitTpl = JSON.stringify({
   id: '%H',
   type: 'commit',
@@ -16,6 +25,9 @@ const commitTpl = JSON.stringify({
   parents: '%P',
 });
 
+/**
+ * Default branch object properties
+ */
 const branchTpl = {
   id: undefined,
   target: undefined,
@@ -24,15 +36,27 @@ const branchTpl = {
   type: 'branch',
 };
 
-
+/**
+ * Convert commit parents property from String to Array of String
+ *
+ * @param {pbject} commit Commit with parents as String
+ * @returns {object} Commit with parents as Array
+ */
 const mapParents = commit => ({
   ...commit,
   parents: commit.parents.length ? commit.parents.split(' ') : ['C0'],
 });
 
-const reduceArrayToObj = (acc, curr) => ({
-  ...acc,
-  [curr.id]: curr,
+/**
+ * Add new item to dict using id item property as dict key
+ *
+ * @param {object} dict Original object
+ * @param {object} item New item to add to dict
+ * @returns {object} New instance of dict, with item added
+ */
+const reduceArrayToObj = (dict, item) => ({
+  ...dict,
+  [item.id]: item,
 });
 
 const buildBranchList = (acc, branch) => {
