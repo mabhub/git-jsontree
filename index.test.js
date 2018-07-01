@@ -5,6 +5,17 @@ const { isValidJSON } = require('./helpers.js');
 const iwd = process.cwd();
 
 describe('JSONTree Class', () => {
+  const repo = new TempRepository();
+  const jsonTree = new JSONTree(repo.path);
+
+  afterAll(() => {
+    /*  Delete temporary repository created for test */
+    repo.clean();
+
+    /* Restore initial process.cwd */
+    process.chdir(iwd);
+  });
+
   describe('toString method', () => {
     it('returns custom text when no path given', () => {
       const tree = new JSONTree();
@@ -12,14 +23,12 @@ describe('JSONTree Class', () => {
     });
 
     it('returns a valid JSON when a git repository path is given', () => {
-      const tree = new JSONTree('.');
-      expect(isValidJSON(tree.toString())).toBe(true);
+      expect(isValidJSON(jsonTree.toString())).toBe(true);
     });
   });
 
   describe('Tree schema', () => {
-    const repo = new TempRepository();
-    const { schema } = new JSONTree(repo.path);
+    const { schema } = jsonTree;
 
     it('has the right number of commits', () => {
       const commitCount = Object.keys(schema.commits).length;
@@ -29,11 +38,6 @@ describe('JSONTree Class', () => {
     it('has the right number of branch', () => {
       const branchCount = Object.keys(schema.branches).length;
       expect(branchCount).toBe(repo.settings.branches.length);
-    });
-
-    afterAll(() => {
-      repo.clean();
-      process.chdir(iwd);
     });
   });
 });
