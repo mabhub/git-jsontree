@@ -1,14 +1,6 @@
 const JSONTree = require('.');
 const TempRepository = require('./temp-repository.js');
-
-const isValidJSON = json => {
-  try {
-    JSON.parse(json);
-  } catch (e) {
-    return false;
-  }
-  return true;
-};
+const { isValidJSON } = require('./helpers.js');
 
 describe('JSONTree Class', () => {
   describe('toString method', () => {
