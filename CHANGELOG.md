@@ -1,4 +1,15 @@
 
+0.6.1 / 2018-07-01
+==================
+
+  * Ignore coverage directory in versioning
+  * Adjust test case and test for managing "detached HEAD"
+  * Implement new test for build method
+  * Ignore CLI code block for coverage report
+  * Reorganize main test suite variables
+  * Allow using a custom key for reduceArrayToObj helper
+  * Add more JSDoc to helpers
+
 0.6.0 / 2018-07-01
 ==================
 
