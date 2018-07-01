@@ -7,53 +7,18 @@ const Command    = require('gitty/lib/command.js');
 const parser     = require('gitty/lib/parser.js');
 const schemaTpl  = require('./default-schema.js');
 
-const logFmt = JSON.stringify({
-  id: '%H',
-  type: 'commit',
-  author: '%an <%ae>',
-  createTime: '%ad',
-  commitMessage: '%s',
-  parents: '%P',
-});
-
-const branchTpl = {
-  id: undefined,
-  target: undefined,
-  remoteTrackingBranchID: null,
-  remote: false,
-  type: 'branch',
-};
+const {
+  commitTpl,
+  mapParents,
+  reduceArrayToObj,
+  buildBranchList,
+} = require('./helpers.js');
 
 const getCommitsCmd = repository =>
-  new Command(repository, 'log', ['-a', `--pretty=format:'${logFmt}',`, '']);
+  new Command(repository, 'log', ['-a', `--pretty=format:'${commitTpl}',`, '']);
 
 const getBranchesCmd = repository =>
   new Command(repository, 'branch', ['--format="%(refname:short) %(objectname:)"']);
-
-const mapParents = commit => ({
-  ...commit,
-  parents: commit.parents.length ? commit.parents.split(' ') : ['C0'],
-});
-
-const reduceArrayToObj = (acc, curr) => ({
-  ...acc,
-  [curr.id]: curr,
-});
-
-const buildBranchList = (acc, branch) => {
-  const [id, target] = branch[0] !== '('
-    ? branch.split(' ') // As: "branche/name abcdef01234sha1"
-    : ['HEAD', '']; // TODO: Find real HEAD sha1
-
-  return id ? {
-    ...acc,
-    [id]: {
-      ...branchTpl,
-      id,
-      target,
-    },
-  } : acc;
-};
 
 class JSONTree {
   constructor (path) {
@@ -108,8 +73,8 @@ class JSONTree {
     return schema;
   }
 }
-module.exports = JSONTree;
 
+module.exports = JSONTree;
 
 if (isCommandLine) {
   const tree = new JSONTree(process.cwd());
