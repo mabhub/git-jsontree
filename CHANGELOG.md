@@ -1,4 +1,18 @@
 
+0.6.0 / 2018-07-01
+==================
+
+  * Add JSDoc blocks to JSONTree Class
+  * Move some pure functions to helpers file
+  * Add test suite for helpers
+  * Restore `process.cwd` after test suite
+  * Create a module dedicated to helpers functions
+  * Add a test for the number of branch
+  * Provide some TempRepository metrics through instance
+  * Allow requiring devDependencies from tests, specs, stories files
+  * Test JSONTree against temp repository
+  * Add a temporary repository Class for testing
+
 0.5.0 / 2018-07-01
 ==================
 
