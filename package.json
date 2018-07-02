@@ -2,9 +2,9 @@
   "name": "git-jsontree",
   "version": "0.6.1",
   "description": "",
-  "main": "index.js",
+  "main": "lib/jsontree.js",
   "bin": {
-    "git-jsontree": "./index.js"
+    "git-jsontree": "bin/git-jsontree"
   },
   "scripts": {
     "version": "git changelog -t $npm_package_version && git add CHANGELOG.md",

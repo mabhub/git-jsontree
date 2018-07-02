@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+const JSONTree = require('../');
+
+const tree = new JSONTree(process.cwd());
+
+if (process.env.DEBUG === 'true') {
+  console.log(tree.schema); // eslint-disable-line no-console
+} else if (tree.schema) {
+  process.stdout.write(JSON.stringify(tree.schema));
+  process.stdout.write('\n');
+}
+
+setTimeout(process.exit, 10);
