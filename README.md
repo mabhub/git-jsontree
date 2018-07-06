@@ -1,6 +1,7 @@
 # Git JSONTree
 
-A tool to create JSON trees for learngitbranching.js.org from real git repository.
+A tool to create JSON trees for [learngitbranching.js.org](https://learngitbranching.js.org/?NODEMO)
+from real git repository.
 
 ## Quick start
 
@@ -11,6 +12,5 @@ A tool to create JSON trees for learngitbranching.js.org from real git repositor
 ```
 
 then:
-- browse to https://learngitbranching.js.org/?NODEMO
-- use `import tree` command
+- browse to https://learngitbranching.js.org/?NODEMO&command=import%20tree
 - paste clipboard content into text field.
