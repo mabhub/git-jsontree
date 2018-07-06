@@ -8,6 +8,8 @@ if (process.env.DEBUG === 'true') {
   console.log(tree.schema); // eslint-disable-line no-console
 } else if (tree.schema) {
   process.stdout.write(JSON.stringify(tree.schema));
+  process.stdout.write('\n\n');
+  process.stdout.write(`Copy JSON above, then paste it there: ${JSONTree.getImportLink()}`);
   process.stdout.write('\n');
 }
 
