@@ -6,7 +6,7 @@ from real git repository.
 ## Quick start
 
 ```sh
-  npm i -g mabhub/git-jsontree
+  npm i -g git-jsontree
   cd /your/git/project/working/directory
   git jsontree # copy generated output to clipboard
 ```
