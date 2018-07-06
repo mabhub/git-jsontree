@@ -1,4 +1,14 @@
 
+0.7.0 / 2018-07-06
+==================
+
+  * Fix a JSDoc type for `build()`
+  * Add import link to CLI command output
+  * Add links to project description
+  * Create static method to output import link
+  * Upgrade ESLint config to latest release
+  * Reorganise source files
+
 0.6.1 / 2018-07-01
 ==================
 
