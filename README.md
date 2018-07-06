@@ -12,5 +12,12 @@ from real git repository.
 ```
 
 then:
+
 - browse to https://learngitbranching.js.org/?NODEMO&command=import%20tree
 - paste clipboard content into text field.
+
+## Links
+
+- https://www.npmjs.com/git-jsontree
+- https://gitlab.com/mab_/git-jsontree
+- https://github.com/mabhub/git-jsontree
