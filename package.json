@@ -24,6 +24,10 @@
       "url": "https://www.simon-previdente.fr/"
     }
   ],
+  "repository": "github:mabhub/git-jsontree",
+  "bugs": {
+    "url": "https://github.com/mabhub/git-jsontree/issues"
+  },
   "license": "AGPL",
   "devDependencies": {
     "eslint": "~5.0.1",
