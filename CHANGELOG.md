@@ -1,4 +1,20 @@
 
+0.8.0 / 2019-01-03
+==================
+
+  * Fix vulnerabilities through `npm audit fix`
+  * Rename `getAttachment` to `getHEADTarget`
+  * Simplify processing by avoiding intermediate properties
+  * Add a lot of missing code comments
+  * Reduce sha1sum to simplier reference
+  * Simplify buildSchema method
+  * Reduce try/catch scope
+  * Rebuild method for gathering refs
+  * Add links in package.json
+  * Add links in README
+  * Fix package reference in QuickStart guide
+  * Add a missing semicolon
+
 0.7.0 / 2018-07-06
 ==================
 
