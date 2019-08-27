@@ -1,4 +1,10 @@
 
+0.8.1 / 2019-08-27
+==================
+
+  * Fix multiple dependency vulnerabilities
+  * Upgrade npm dependencies
+
 0.8.0 / 2019-01-03
 ==================
 
